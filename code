@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+#include <math.h>
 
 int
 poslednaya ()
@@ -20,38 +22,33 @@ pervaya ()
 int number = 0;
 
 int
-DigitCountGenius ()
+ANY_BIGGER_TEN_TO_DEC (char chislo[10], int first)
 {
-  int result = 0;
-
-  while (number != 0)
+  int i, s, k, p;
+  s = 0;
+  p = strlen (chislo) - 1;
+  printf ("%d\n", p);
+  printf ("%d\n", first);
+  for (i = 0; p >= 0; i++, p--)
     {
-      number /= 10;
-      result++;
+      k = toupper (chislo[i]);
+      s += ((k >= 'A') ? 10 + k - 'A' : k - '0') * pow (first, p);
     }
-
-  return result;
+  return s;
 }
 
 int
 main (void)
 {
-  char chislo[50];
+  char chislo[10];
   int first, b, last, chl, chl1;
   printf ("first system: ");
   first = pervaya ();
   printf ("\nposledna'ya system: ");
   last = poslednaya ();
   printf ("vvedite chislo: ");
-  scanf ("%d", &number);
-  chl1 = number;
-  int res = DigitCountGenius();
-  for(int i = res; i>0; i--){
-      chislo[i-1] = chl1 % 10;
-      chl1/=10;
-  }
-  for(int i = 0; i<res; i++){
-      printf("%d", chislo[i]);
-  }
+  scanf ("%s", &chislo);
+  printf ("Result: %d\n", ANY_BIGGER_TEN_TO_DEC (chislo, first));
+
   return 0;
 }
