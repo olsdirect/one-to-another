@@ -27,8 +27,8 @@ ANY_BIGGER_TEN_TO_DEC (char chislo[10], int first)
   int i, s, k, p;
   s = 0;
   p = strlen (chislo) - 1;
-  printf ("%d\n", p);
-  printf ("%d\n", first);
+  //printf ("%d\n", p);
+  //printf ("%d\n", first);
   for (i = 0; p >= 0; i++, p--)
     {
       k = toupper (chislo[i]);
@@ -48,7 +48,15 @@ main (void)
   last = poslednaya ();
   printf ("vvedite chislo: ");
   scanf ("%s", &chislo);
-  printf ("Result: %d\n", ANY_BIGGER_TEN_TO_DEC (chislo, first));
+  //printf ("Result: %d\n", ANY_BIGGER_TEN_TO_DEC (chislo, first));
+  if(first>last){
+      printf("Resultat perevoda v DEC: %d\n", ANY_BIGGER_TEN_TO_DEC (chislo, first));
+      printf("nu i tut nedodumal yesh'e))))");
+  }
+  else if(first<last){
+      printf("Ya dal'she yesh'e ye dumal, izvinite");
+  }
+  else printf("U vas odinakovaya s.s.");
 
   return 0;
 }
